@@ -23,11 +23,14 @@ public class Women extends Person {
     public HashMap<String, Object> map;
 
     public Women(){
-        super();
+
+    }
+
+    private Women(int gender){
+        this.gender = gender;
     }
 
     public Women(int gender, String phone){
-        super();
         this.gender = gender;
         this.phone = phone;
     }
@@ -56,5 +59,17 @@ public class Women extends Person {
         String result = name + "正在说话。。。";
         System.out.println(result);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Women{" +
+                "gender=" + gender +
+                ", phone='" + phone + '\'' +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", cars=" + cars +
+                ", map=" + map +
+                '}';
     }
 }

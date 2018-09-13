@@ -16,9 +16,9 @@ public class GetMethod {
 
         //getMyFields();
 
-        getMyMethods();
+        //getMyMethods();
 
-        //getMyConstructors();
+        getMyConstructors();
 
     }
 
@@ -113,10 +113,12 @@ public class GetMethod {
     private static void getMyConstructors() {
         Class clazz = Women.class;
 
+        System.out.println("------------------ 通过反射构获取构造方法 ---------------------");
+
         try {
             Constructor constructor = clazz.getConstructor(int.class, String.class);
             System.out.println("getConstructor:" + constructor.toString());
-            constructor = clazz.getDeclaredConstructor();
+            constructor = clazz.getDeclaredConstructor(int.class);
             System.out.println("getDeclaredConstructor:" + constructor.toString());
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -124,6 +126,7 @@ public class GetMethod {
 
         System.out.println();
 
+        //getConstructors只能获取本类及父类的public构造方法
         Constructor[] constructors = clazz.getConstructors();
 
         for (Constructor constructor : constructors) {
@@ -133,12 +136,40 @@ public class GetMethod {
 
         System.out.println();
 
+        //getDeclaredConstructors可以获取本类的所有属性构造方法
         constructors = clazz.getDeclaredConstructors();
 
         for (Constructor constructor : constructors) {
             System.out.println("getDeclaredConstructors:" + constructor.toString());
             //private com.sdc.designpatterns.reflect.Women()
             //public com.sdc.designpatterns.reflect.Women(int,java.lang.String)
+        }
+
+        System.out.println("------------------ 通过反射构造对象 ---------------------");
+
+        try {
+            Women women = (Women) clazz.newInstance();
+            System.out.println(women.toString());
+            women.speak();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Constructor constructor = clazz.getConstructor(int.class, String.class);
+            Women women = (Women) constructor.newInstance(22, "13244332315");
+            System.out.println(women.toString());
+            women.eat();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
         }
     }
 
