@@ -2,6 +2,7 @@ package com.sdc.designpatterns.reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -13,9 +14,9 @@ import java.lang.reflect.Method;
 public class GetMethod {
     public static void main(String[] args) {
 
-        getMyFields();
+        //getMyFields();
 
-        //getMyMethods();
+        getMyMethods();
 
         //getMyConstructors();
 
@@ -87,8 +88,24 @@ public class GetMethod {
         System.out.println("------------------ 通过反射修改和操作方法 ---------------------");
 
         try {
-            Method eat = clazz.getDeclaredMethod("eat");
+            Method speak = clazz.getDeclaredMethod("speak");
+            speak.invoke(null, null); //调用静态方法，可以接收返回值，返回值是Object，需要转换
+
+            speak = clazz.getDeclaredMethod("speak", String.class);
+            speak.setAccessible(true); //设置允许访问private方法
+            String result = (String) speak.invoke(null, "sdc "); //调用带参数的静态方法，可以接收返回值
+            System.out.println("result = " + result);
+
+            Method sing = clazz.getDeclaredMethod("sing", null);
+            sing.invoke(new Women(), null);
         } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+            // 通过 InvocationTargetException.getCause() 获取被包装的异常
+            System.out.println("getDeclaredMethod occur some error,Error type is :" + e.getCause().getClass().getName());
+            System.out.println("Error message is :" + e.getCause().getMessage());
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }

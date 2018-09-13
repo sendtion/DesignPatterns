@@ -22,7 +22,7 @@ public class Women extends Person {
 
     public HashMap<String, Object> map;
 
-    private Women(){
+    public Women(){
         super();
     }
 
@@ -44,7 +44,17 @@ public class Women extends Person {
         System.out.println("正在走路。。。");
     }
 
-    protected void sing(){
-        System.out.println("正在唱歌。。。");
+    protected void sing(String name){
+        System.out.println(name + "正在唱歌。。。");
+    }
+
+    public static void speak(){
+        System.out.println("正在说话。。。");
+    }
+
+    private static String speak(String name){
+        String result = name + "正在说话。。。";
+        System.out.println(result);
+        return result;
     }
 }
