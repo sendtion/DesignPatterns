@@ -1,4 +1,6 @@
-package com.sdc.designpatterns.reflect;
+package com.sdc.designpatterns.reflect.bean;
+
+import com.sdc.designpatterns.reflect.bean.Car;
 
 /**
  * Description:

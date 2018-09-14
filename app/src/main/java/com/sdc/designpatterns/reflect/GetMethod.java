@@ -1,5 +1,7 @@
 package com.sdc.designpatterns.reflect;
 
+import com.sdc.designpatterns.reflect.bean.Women;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -131,7 +133,7 @@ public class GetMethod {
 
         for (Constructor constructor : constructors) {
             System.out.println("getConstructors:" + constructor.toString());
-            //public com.sdc.designpatterns.reflect.Women(int,java.lang.String)
+            //public com.sdc.designpatterns.reflect.bean.Women(int,java.lang.String)
         }
 
         System.out.println();
@@ -141,8 +143,8 @@ public class GetMethod {
 
         for (Constructor constructor : constructors) {
             System.out.println("getDeclaredConstructors:" + constructor.toString());
-            //private com.sdc.designpatterns.reflect.Women()
-            //public com.sdc.designpatterns.reflect.Women(int,java.lang.String)
+            //private com.sdc.designpatterns.reflect.bean.Women()
+            //public com.sdc.designpatterns.reflect.bean.Women(int,java.lang.String)
         }
 
         System.out.println("------------------ 通过反射构造对象 ---------------------");

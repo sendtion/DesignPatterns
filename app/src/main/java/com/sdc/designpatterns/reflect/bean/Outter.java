@@ -1,4 +1,4 @@
-package com.sdc.designpatterns.reflect;
+package com.sdc.designpatterns.reflect.bean;
 
 /**
  * Description:
@@ -8,7 +8,7 @@ package com.sdc.designpatterns.reflect;
 
 public class Outter {
 
-    static class Inner{
+    public static class Inner{
 
     }
 }

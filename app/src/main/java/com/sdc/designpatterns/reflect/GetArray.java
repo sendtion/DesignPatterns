@@ -1,5 +1,7 @@
 package com.sdc.designpatterns.reflect;
 
+import com.sdc.designpatterns.reflect.bean.Shuzu;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 

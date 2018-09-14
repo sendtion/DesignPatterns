@@ -1,4 +1,4 @@
-package com.sdc.designpatterns.reflect;
+package com.sdc.designpatterns.reflect.bean;
 
 /**
  * Description:
